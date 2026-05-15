@@ -183,17 +183,12 @@ def main():
         nomes_adversarios = [f"{adv['nome']} ({formatar_data_para_exibicao(adv['data_obj'])})" 
                            for adv in st.session_state.adversarios]
 
-        indice_selecionado = st.selectbox(
+        st.selectbox(
             "🎯 Saltar para adversário:",
             range(len(nomes_adversarios)),
-            index=st.session_state.indice_atual,
             format_func=lambda x: nomes_adversarios[x],
-            key="selectbox_adversario"
+            key="indice_atual"
         )
-
-        # Atualiza índice se seleção mudou
-        if indice_selecionado != st.session_state.indice_atual:
-            st.session_state.indice_atual = indice_selecionado
 
     with col3:
         st.button(
